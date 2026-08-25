@@ -273,7 +273,7 @@
       {{-- إذا مافماش خدمات فـ قاعدة البيانات توا، تبان الكروت الافتراضية --}}
       <div class="md:w-1/2 md:px-4 lg:w-1/4">
         <div class="bg-white rounded-lg border border-gray-300 p-8">
-          <img src="{{ asset('images/' . ($icons[$index % count($icons)]) . '.png') }}" alt="" class="h-20 mx-auto">
+          <img src="{{ asset('images/teeth-whitening.png') }}" alt="" class="h-20 mx-auto">
           <h4 class="text-xl font-bold mt-4">Blanchiment des dents</h4>
           <p class="mt-1">Découvrez notre expertise.</p>
           <a href="#" class="block mt-4">En savoir plus</a>
@@ -289,7 +289,7 @@
       </div>
       <div class="md:w-1/2 md:px-4 mt-4 md:mt-8 lg:mt-0 lg:w-1/4">
         <div class="bg-white rounded-lg border border-gray-300 p-8">
-          <img src="{{ asset('images/painless-painless-dentistry.png') }}" alt="" class="h-20 mx-auto">
+          <img src="{{ asset('images/painless-dentistry.png') }}" alt="" class="h-20 mx-auto">
           <h4 class="text-xl font-bold mt-4">Dentisterie sans douleur</h4>
           <p class="mt-1">Découvrez notre expertise.</p>
           <a href="#" class="block mt-4">En savoir plus</a>
@@ -317,7 +317,7 @@
     </div>
 
     <div class="w-full md:max-w-md md:mx-auto lg:w-1/2 lg:px-8 mt-12 mt:md-0">
-      : <img src="{{ asset('images/testimonial.jpg') }}" alt="" class="w-full h-72 object-cover rounded-lg">
+      <img src="{{ asset('images/testimonial.jpg') }}" alt="" class="w-full h-72 object-cover rounded-lg">
       <p class="italic text-sm mt-2 text-center">Un salon à votre écoute, chaque jour.</p>
     </div>
   </div>
@@ -330,7 +330,7 @@
     <h2 class="text-3xl leading-tight font-bold">Blog Beauté Santé</h2>
     <p class="text-gray-600 mt-2 md:max-w-lg">Conseils et actualités pour prendre soin de votre sourire au quotidien.</p>
 
-    <a href="#" title="" class="inline-block : text-purple-600font-semibold mt-6 mt:md-0">Voir tous les articles</a>
+    <a href="#" title="" class="inline-block text-purple-600 font-semibold mt-6 mt:md-0">Voir tous les articles</a>
   </div>
 
   <div class="md:flex mt-12 md:-mx-4">
@@ -339,7 +339,7 @@
         <div class="w-full h-48 overflow-hidden bg-gray-300"></div>
         <div class="p-4">
           <div class="flex items-center text-sm">
-            <span class=": text-purple-600font-semibold">Conseils</span>
+            <span class="text-purple-600 font-semibold">Conseils</span>
             <span class="ml-4 text-gray-600">20 Août 2026</span>
           </div>
           <p class="text-lg font-semibold leading-tight mt-4">Titre de l'article</p>
@@ -359,7 +359,7 @@
         <div class="w-full h-48 overflow-hidden bg-gray-300"></div>
         <div class="p-4">
           <div class="flex items-center text-sm">
-            <span class=": text-purple-600font-semibold">Conseils</span>
+            <span class="text-purple-600 font-semibold">Conseils</span>
             <span class="ml-4 text-gray-600">20 Août 2026</span>
           </div>
           <p class="text-lg font-semibold leading-tight mt-4">Titre de l'article</p>
@@ -380,11 +380,10 @@
 <section id="contact"
   class="relative bg-blue-teal-gradient px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-12 text-center md:text-left">
   <div class="md:flex md:items-center md:justify-center">
-    <h2 class="text-xl font-bold text-white">Contactez-nous dès aujourd'hui ! <br class="block md:hidden">Appelez-nous au : +1
-      562-789-1935</h2>
+    <h2 class="text-xl font-bold text-white">Envie de prendre soin de vous ? <br class="block md:hidden">Appelez-nous au : +216 XX XXX XXX</h2>
     <a href="{{ route('booking.index') }}"
-      class="px-8 py-4 bg-white text-purple-700rounded inline-block font-semibold md:ml-8 mt-4 md:mt-0">Book
-      Appointment</a>
+      class="px-8 py-4 bg-white text-purple-700 rounded inline-block font-semibold md:ml-8 mt-4 md:mt-0">Prendre
+      Rendez-vous</a>
   </div>
 </section>
 {{-- end cta --}}
@@ -408,7 +407,7 @@
                   type="email" name="email" placeholder="Entrez votre adresse email" required>
 
                 <button type="submit"
-                  class=" bg-rose-800 hover:bg-rose-700text-white px-4 py-2 text-sm font-bold rounded absolute top-0 right-0 my-2 mr-2">S'abonner</button>
+                  class="bg-rose-800 hover:bg-rose-700 text-white px-4 py-2 text-sm font-bold rounded absolute top-0 right-0 my-2 mr-2">S'abonner</button>
               </div>
             </div>
           </form>
