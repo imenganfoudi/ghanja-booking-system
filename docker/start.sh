@@ -1,16 +1,16 @@
 #!/bin/bash
 set -e
 
-# Génère la clé d'application si elle n'existe pas encore (sécurité, normalement déjà définie via env var)
+echo "=== [start.sh] Clearing config cache ==="
 php artisan config:clear
 
-# Lance les migrations automatiquement au démarrage
-php artisan migrate --force
+echo "=== [start.sh] Running migrations ==="
+php artisan migrate --force -v
 
-# Cache la config pour de meilleures performances en production
+echo "=== [start.sh] Caching config ==="
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
-# Démarre Apache au premier plan
-apache2-foreground
+echo "=== [start.sh] Starting Apache ==="
+exec apache2-foreground
