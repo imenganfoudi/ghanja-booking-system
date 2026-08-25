@@ -1,58 +1,165 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 💇‍♀️ Ghanja — Booking Reservation System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Système de réservation en ligne pour salon de beauté, développé avec **Laravel**. Permet aux clients de réserver un rendez-vous en ligne, et aux administrateurs de gérer les rendez-vous, services et employés depuis un panneau d'administration complet.
 
-## About Laravel
+<!--
+  📸 Ajouter ici des screenshots du projet :
+  ![Page d'accueil](docs/screenshots/home.png)
+  ![Réservation](docs/screenshots/booking.png)
+  ![Admin dashboard](docs/screenshots/admin-dashboard.png)
+-->
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+🔗 **Démo live :** _à venir_
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ✨ Fonctionnalités
 
-## Learning Laravel
+### Côté client
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Page d'accueil avec présentation du salon et des services
+- Réservation en ligne avec sélection de service, employé, date et créneau horaire
+- Détection automatique des créneaux disponibles (en temps réel, sans conflit)
+- Confirmation de réservation par email (protégée par lien signé, non-devinable)
+- Inscription à la newsletter
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Côté administration
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- Dashboard avec vue d'ensemble
+- Gestion complète des rendez-vous (filtrage par statut, mise à jour, suppression)
+- Gestion des services (ajout, modification, suppression, activation/désactivation)
+- Gestion des employés (staff)
+- Notification par email à chaque nouvelle réservation
 
-## Agentic Development
+### Sécurité
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+- Authentification avec [Laravel Breeze](https://laravel.com/docs/starter-kits#laravel-breeze)
+- Autorisation basée sur les rôles (admin / utilisateur standard)
+- Protection contre les doubles réservations (transactions + row locking)
+- Liens de confirmation signés (protection contre l'accès non autorisé aux données d'autres clients)
+- Rate limiting sur les formulaires sensibles (réservation, disponibilités)
+- Validation stricte des données côté serveur
+
+---
+
+## 🛠️ Stack technique
+
+| Catégorie        | Technologie          |
+| ---------------- | -------------------- |
+| Framework        | Laravel              |
+| Authentification | Laravel Breeze       |
+| Base de données  | MySQL                |
+| Frontend         | Blade + Tailwind CSS |
+| Emails           | Laravel Mail (SMTP)  |
+
+---
+
+## 🚀 Installation locale
+
+### Prérequis
+
+- PHP >= 8.2
+- Composer
+- MySQL
+- Node.js & npm
+
+### Étapes
 
 ```bash
-composer require laravel/boost --dev
+# 1. Cloner le dépôt
+git clone https://github.com/imenganfoudi/ghanja-booking-system.git
+cd ghanja-booking-system
 
-php artisan boost:install
+# 2. Installer les dépendances PHP
+composer install
+
+# 3. Installer les dépendances front-end
+npm install
+npm run build
+
+# 4. Configurer l'environnement
+cp .env.example .env
+php artisan key:generate
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### Configurer la base de données
 
-## Contributing
+Dans le fichier `.env`, renseigner vos identifiants MySQL :
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=booking_reservation
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## Code of Conduct
+Puis lancer les migrations :
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+php artisan migrate
+```
 
-## Security Vulnerabilities
+### Configurer l'envoi d'emails (optionnel)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Dans `.env`, renseigner un compte SMTP (ex: Gmail avec un [mot de passe d'application](https://myaccount.google.com/apppasswords)) :
 
-## License
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=votre-email@gmail.com
+MAIL_PASSWORD="xxxx xxxx xxxx xxxx"
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="votre-email@gmail.com"
+MAIL_FROM_NAME="Ghanja"
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+ADMIN_EMAIL=admin@example.com
+```
+
+### Lancer le serveur
+
+```bash
+php artisan serve
+```
+
+Le site est accessible sur `http://127.0.0.1:8000`.
+
+---
+
+## 📁 Structure du projet
+
+```
+app/
+├── Http/Controllers/
+│   ├── AppointmentController.php       # Réservation côté client
+│   └── Admin/                          # Contrôleurs du panneau admin
+├── Models/
+│   ├── Appointment.php
+│   ├── Service.php
+│   ├── Staff.php
+│   └── Subscriber.php
+resources/views/
+├── front/                              # Vues publiques (accueil, réservation)
+└── admin/                              # Vues du panneau d'administration
+routes/
+└── web.php
+```
+
+---
+
+## 🔒 Points de sécurité implémentés
+
+Ce projet a fait l'objet d'une revue de sécurité couvrant notamment :
+
+- **Race conditions** : verrouillage des lignes (`lockForUpdate`) dans une transaction lors de la création d'un rendez-vous, empêchant deux réservations simultanées sur le même créneau.
+- **IDOR (Insecure Direct Object Reference)** : la page de confirmation de rendez-vous est protégée par une URL signée Laravel, empêchant un utilisateur de consulter les données d'un rendez-vous qui n'est pas le sien en modifiant simplement l'identifiant dans l'URL.
+- **Rate limiting** : limitation du nombre de requêtes sur les endpoints de réservation pour prévenir les abus.
+- **Validation stricte** : formats de données validés côté serveur (dates, heures, emails).
+
+---
+
+## 📄 Licence
+
+Projet développé à des fins d'apprentissage / portfolio.
