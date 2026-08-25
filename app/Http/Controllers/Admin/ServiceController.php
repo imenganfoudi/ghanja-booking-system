@@ -29,7 +29,7 @@ class ServiceController extends Controller
             'is_active' => $request->boolean('is_active', true),
         ]);
 
-        return back()->with('success', 'تم إضافة الخدمة.');
+        return back()->with('success', 'Service ajouté avec succès.');
     }
 
     public function update(Request $request, Service $service)
@@ -46,13 +46,13 @@ class ServiceController extends Controller
             'is_active' => $request->boolean('is_active', true),
         ]);
 
-        return back()->with('success', 'تم تحديث الخدمة.');
+        return back()->with('success', 'Service mis à jour avec succès.');
     }
 
     public function destroy(Service $service)
     {
         $service->delete();
 
-        return back()->with('success', 'تم حذف الخدمة.');
+        return back()->with('success', 'Service supprimé avec succès.');
     }
 }
