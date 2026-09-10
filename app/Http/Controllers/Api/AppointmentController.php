@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAppointmentRequest;
 use App\Models\Appointment;
 use App\Models\Service;
 use App\Models\Staff;
@@ -98,21 +99,13 @@ class AppointmentController extends Controller
 
     /**
      * Enregistre une nouvelle réservation (API version).
+     *
      * Même logique que la version web : transaction + lockForUpdate
      * pour empêcher les doubles réservations sur le même créneau.
      */
-    public function store(Request $request)
+    public function store(StoreAppointmentRequest $request)
     {
-        $validated = $request->validate([
-            'service_id' => 'required|exists:services,id',
-            'staff_id' => 'nullable|exists:staff,id',
-            'customer_name' => 'required|string|max:255',
-            'customer_email' => 'required|email|max:255',
-            'customer_phone' => 'required|string|max:30',
-            'appointment_date' => 'required|date|after_or_equal:today',
-            'start_time' => 'required|date_format:H:i',
-            'notes' => 'nullable|string',
-        ]);
+        $validated = $request->validated();
 
         $service = Service::findOrFail($validated['service_id']);
 
