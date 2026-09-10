@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AppointmentController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\StaffController;
 use Illuminate\Http\Request;
@@ -30,4 +31,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('services', ServiceController::class)->except(['show']);
     Route::apiResource('staff', StaffController::class)->except(['show']);
+
+    Route::get('/dashboard/stats', [DashboardController::class, 'stats']);
 });
