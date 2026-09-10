@@ -1,3 +1,4 @@
+    ![Tests](https://github.com/imenganfoudi/ghanja-booking-system/actions/workflows/tests.yml/badge.svg)
 # Ghanja v2 — Backend API
 
 API REST développée avec **Laravel 13** et **Laravel Sanctum**, pour le système de réservation en ligne Ghanja.
